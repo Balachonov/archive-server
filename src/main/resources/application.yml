@@ -1,0 +1,25 @@
+server:
+  port: 8890
+
+spring:
+  application:
+    name: archive-server
+  datasource:
+    url: jdbc:postgresql://localhost:5432/delivery-food-archive
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
