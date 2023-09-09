@@ -18,7 +18,6 @@ public class PersonArchiveServiceImpl implements PersonArchiveService {
     private final PersonArchiveMapper personArchiveMapper;
 
     public void savePersonArchive(PersonArchiveRequest personArchiveRequest) {
-
         PersonArchive personArchive = personArchiveMapper.mapToPersonArchive(personArchiveRequest);
         personArchive.setDeleted_date(LocalDate.now());
         personArchiveRepository.save(personArchive);
