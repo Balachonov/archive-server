@@ -5,7 +5,7 @@ import balachonov.archiveserver.entities.PersonArchive;
 import balachonov.archiveserver.sevice.PersonArchiveService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,18 +22,8 @@ public class PersonArchiveController {
         personArchiveService.savePersonArchive(personArchiveRequest);
     }
 
-    @GetMapping(value = "/persons/{pageNumber}/{pageSize}")
-    public List<PersonArchive> getPersons(@PathVariable Integer pageNumber,
-                                          @PathVariable Integer pageSize) {
-        Page<PersonArchive> data = personArchiveService.getPersons(pageNumber, pageSize, null);
-        return data.getContent();
-    }
-
-    @GetMapping(value = "/persons/{pageNumber}/{pageSize}/{sort}")
-    public List<PersonArchive> getPersons(@PathVariable Integer pageNumber,
-                                          @PathVariable Integer pageSize,
-                                          @PathVariable String sort) {
-        Page<PersonArchive> data = personArchiveService.getPersons(pageNumber, pageSize, sort);
-        return data.getContent();
+    @GetMapping(value = "/persons")
+    public List<PersonArchive> getPersons(Pageable pageable) {
+        return personArchiveService.getPersons(pageable);
     }
 }
