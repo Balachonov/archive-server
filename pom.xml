@@ -107,7 +107,7 @@
         </dependencies>
     </dependencyManagement>
     <build>
-        <finalName>delivery-food</finalName>
+        <finalName>archive-service</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
